@@ -8,7 +8,30 @@ Before starting a debugging session it is necessary to open a look back address,
 ```sudo ifconfig lo0 alias 10.254.254.254```
 
 
-###Sublime project settings
+###Sublime project settings for XDEBUG
+path_mapping must point to the folder with script you're debugging in - eg for page-templates:
+```
+{
+	"folders":
+	[
+		{
+			"path": "/private/var/www/ssb-bu.corp"
+		}
+	],
+    "settings": {
+        "xdebug": {
+            "path_mapping": {
+                    "/var/www/html/public/wordpress/wp-content/themes/ssb/page-templates/" : "/private/var/www/ssb-bu.corp/public/wordpress/wp-content/themes/ssb/page-templates/"
+            },
+             "url": "http://localhost:8000/",
+            "port": 9999
+        }
+    }
+}
+```
+
+
+Or for a file in the root of the project:
 ```
 {
   "folders":
