@@ -1,12 +1,12 @@
-FROM alpine:3.4
+FROM alpine:edge
 MAINTAINER Wodby <admin@wodby.com>
 
 # Create user www-data
 RUN addgroup -g 82 -S www-data && \
-	adduser -u 82 -D -S -G www-data www-data
+    adduser -u 82 -D -S -G www-data www-data
 
 # Install packages
-RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
+RUN echo 'http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
 
     apk add --update \
 
@@ -26,44 +26,44 @@ RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/re
         build-base \
         autoconf \
         libtool \
-        php7-dev@testing \
+        php7-dev \
         pcre-dev \
         imagemagick-dev \
 
         # PHP packages
-        php7@testing \
-        php7-fpm@testing \
-        php7-opcache@testing \
-        php7-xml@testing \
-        php7-ctype@testing \
-        php7-ftp@testing \
-        php7-gd@testing \
-        php7-json@testing \
-        php7-posix@testing \
-        php7-curl@testing \
-        php7-dom@testing \
-        php7-pdo@testing \
-        php7-pdo_mysql@testing \
-        php7-sockets@testing \
-        php7-zlib@testing \
-        php7-mcrypt@testing \
-        php7-mysqli@testing \
-        php7-sqlite3@testing \
-        php7-bz2@testing \
-        php7-phar@testing \
-        php7-openssl@testing \
-        php7-posix@testing \
-        php7-zip@testing \
-        php7-calendar@testing \
-        php7-iconv@testing \
-        php7-imap@testing \
-        php7-soap@testing \
-        php7-pear@testing \
-        php7-redis@testing \
-        php7-mbstring@testing \
-        php7-xdebug@testing \
-        php7-memcached@testing \
-        php7-exif@testing && \
+        php7 \
+        php7-fpm \
+        php7-opcache \
+        php7-xml \
+        php7-ctype \
+        php7-ftp \
+        php7-gd \
+        php7-json \
+        php7-posix \
+        php7-curl \
+        php7-dom \
+        php7-pdo \
+        php7-pdo_mysql \
+        php7-sockets \
+        php7-zlib \
+        php7-mcrypt \
+        php7-mysqli \
+        php7-sqlite3 \
+        php7-bz2 \
+        php7-phar \
+        php7-openssl \
+        php7-posix \
+        php7-zip \
+        php7-calendar \
+        php7-iconv \
+        php7-imap \
+        php7-soap \
+        php7-pear \
+        php7-redis \
+        php7-mbstring \
+        php7-xdebug \
+        php7-memcached \
+        php7-exif && \
 
     # Create symlinks for backward compatibility
     ln -sf /usr/bin/php7 /usr/bin/php && \
@@ -126,7 +126,7 @@ RUN mkdir -p /var/www/html && chown -R 82:82 /var/www
 WORKDIR /var/www/html
 VOLUME /var/www/html
 
-EXPOSE 9000
+EXPOSE 9000 9999
 
 COPY docker-entrypoint.sh /usr/local/bin/
 CMD "docker-entrypoint.sh"
