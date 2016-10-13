@@ -9,7 +9,7 @@ Before starting a debugging session it is necessary to open a look back address,
 
 
 ###Sublime project settings for XDEBUG
-path_mapping must point to the folder with script you're debugging in - eg for page-templates:
+path_mapping must point to the folder with script you're debugging in - but can map multiple - eg for debugging in either wp root or in page-templates:
 ```
 {
 	"folders":
@@ -21,31 +21,10 @@ path_mapping must point to the folder with script you're debugging in - eg for p
     "settings": {
         "xdebug": {
             "path_mapping": {
-                    "/var/www/html/public/wordpress/wp-content/themes/ssb/page-templates/" : "/private/var/www/ssb-bu.corp/public/wordpress/wp-content/themes/ssb/page-templates/"
+                    "/var/www/html/public/wordpress/wp-content/themes/ssb/page-templates/" : "/private/var/www/ssb-bu.corp/public/wordpress/wp-content/themes/ssb/page-templates/",
+                    "/var/www/html/public/wordpress/" : "/private/var/www/ssb-bu.corp/public/wordpress/"
             },
              "url": "http://localhost:8000/",
-            "port": 9999
-        }
-    }
-}
-```
-
-
-Or for a file in the root of the project:
-```
-{
-  "folders":
-  [
-		{
-			"path": "/private/var/www/projectname"
-		}
-	],
-    "settings": {
-        "xdebug": {
-            "path_mapping": {
-                    "/var/www/html/public/wordpress/" : "/private/var/www/projectname/public/wordpress/"
-            },
-             "url": "http://localhost:8000",
             "port": 9999
         }
     }
