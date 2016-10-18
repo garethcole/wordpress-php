@@ -21,6 +21,10 @@ RUN echo 'http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositorie
         imap \
         imagemagick \
         mariadb-client \
+        bash \
+        bash-doc \
+        bash-completion \
+        subversion \
 
         # Temp packages
         build-base \
