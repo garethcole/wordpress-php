@@ -93,6 +93,9 @@ RUN echo 'http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositorie
 
     # Add composer parallel install plugin
     composer global require "hirak/prestissimo:^0.3" && \
+    composer global require "phpunit/phpunit" && \
+
+    ln -sf "/root/.composer/vendor/bin/phpunit" /usr/local/bin/ && \
 
     # Install wp-cli
     composer create-project wp-cli/wp-cli /usr/local/src/wp-cli --no-dev && \
